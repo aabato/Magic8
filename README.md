@@ -1,7 +1,31 @@
 # iOS Workshop
 This workshop will walk you through some very basic Swift and help you explore Xcode, storyboards, and view controllers. This will be self-paced. 
+
+<!-- TOC -->
+
+- [iOS Workshop](#ios-workshop)
+    - [Swift Fundamentals](#swift-fundamentals)
+        - [`let` vs. `var`](#let-vs-var)
+        - [Data types](#data-types)
+            - [Integers](#integers)
+            - [Floats](#floats)
+            - [Boolean](#boolean)
+            - [Strings](#strings)
+        - [Collection Types](#collection-types)
+            - [Arrays](#arrays)
+            - [Dictionaries](#dictionaries)
+    - [Loops and Functions](#loops-and-functions)
+        - [For-loops](#for-loops)
+        - [Functions](#functions)
+        - [Anatomy of a function](#anatomy-of-a-function)
+        - [Learn more Swift](#learn-more-swift)
+    - [Storyboards](#storyboards)
+        - [Tools](#tools)
+
+<!-- /TOC -->
+
 ## Swift Fundamentals
-Open 
+Open `Fundamentals.playground` to follow along with Exercises.
 
 ### `let` vs. `var`
 There are two ways you can initialize a variable: using `let` and `var`
@@ -220,4 +244,10 @@ printHelloWorld() // Hello, World!
 
 ### [Learn more Swift](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
 
+There are extra exercises included in `Fundamentals.playground`
+
 ## Storyboards
+Open `Magic8.xcodeproj` to follow along this portion of the workshop
+
+### Tools
+![Tools](./imgs/tools.png)
