@@ -23,6 +23,9 @@ import UIKit
 // Exercise 7: Create a function that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array.
 
 
+// To make it fancier, pass two arguments: the array of places and a boolean. The boolean will determine if the the string returned will say "Good Morning, ___" or "Good Evening, __ ".
+
+
 /**************************
     Extra exercises
 ***************************/

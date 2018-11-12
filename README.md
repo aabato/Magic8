@@ -26,6 +26,7 @@ Environment Requirements:
         - [Dictionaries](#dictionaries)
     - [For-loops](#for-loops)
         - [__Exercise 6__](#exercise-6)
+    - [If-Else](#if-else)
     - [Functions](#functions)
         - [Anatomy of a function](#anatomy-of-a-function)
         - [__Exercise 7__](#exercise-7)
@@ -38,6 +39,7 @@ Environment Requirements:
     - [Build the Magic 8 Ball](#build-the-magic-8-ball)
         - [Set up the view](#set-up-the-view)
         - [Set up the logic](#set-up-the-logic)
+        - [Some extra fun](#some-extra-fun)
 
 <!-- /TOC -->
 
@@ -217,19 +219,31 @@ print(dictionary.values)
 `keys` and `values` can be iterated over like arrays.
 
 ## For-loops
+For loops are a great way to iterate through arrays or other collections.
+
+There are several ways to do a for-loop.
+
+1. You can define one by declaring a variable that holds the current value in the iteration. In this example, `item` will first hold "Thing 1', run the code inside the for loop. Once the code inside the for loop is done, it will hold "Thing 2" and so on, until the array is exhausted.
 ```swift
+let arrayOfThings = ["Thing 1", "Thing 2", "Thing 3"]
 for item in arrayOfThings {
     print(item)
 }
-
+```
+2. You can define a for-loop using a range of indices. Here `i` represents the index we're currently on, and the range is defined with `0...5` which means the range from 0 to 5, inclusive.
+```swift
 for i in 0...5 {
     print(i)
 }
-
+```
+3. You can also define the range different in the example below. The range is defined as `0..<6`, which includes all values from 0 (inclusive) to just less than 6.
+```swift
 for j in 0..<6 {
     print(j)
 }
-
+```
+4. You can also iterate through a dictionary.
+```swift
 for (key, value) in dictionaryOfThings {
     print("Key: \(key), Value: \(value))
 }
@@ -239,6 +253,16 @@ for (key, value) in dictionaryOfThings {
 Use a for-loop to print out "Hello, __!" for each place in your array from Exercise 4
 
 -----
+## If-Else
+It's common to want to perform different actions depending on a true/false check. The best way to do so is through an if-else statement.
+```swift
+let sum = a + b
+if sum > 5 {
+    print("The sum is greater than 5")
+} else {
+    print("The sum is less than or equal to 5")
+}
+```
 ## Functions
 Functions are a great way to compartmentalize code into chunks.
 
@@ -275,13 +299,16 @@ printHelloWorld() // Hello, World!
 ```
 -----
 ### __Exercise 7__
-Create a function that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array.
+Create a function that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array. 
+
+To make it fancier, pass two arguments: the array of places and a boolean. The boolean will determine if the the string returned will say "Good Morning, ___" or "Good Evening, __ ".
 
 -----
 
-## [Learn more Swift](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
+## Learn more Swift
 
-There are extra exercises included in `Fundamentals.playground`
+* Check out [Swift.org Basics] to learn more Swift(https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
+* There are extra exercises included in `Fundamentals.playground`
 
 # Storyboards
 We'll get back to Swift in a bit. For now, let's look at some storyboards.
@@ -301,7 +328,7 @@ You can also open/close the navigator, the debugger, and inspectors on the top r
 1. Open your navigator and find `Main.storyboard`. 
     * Note the View Controller that has been created for you.
     * The arrow on the left indicates that this is the initial view controller.
-    * Note the editor has an added panel with the contents of your storyboard
+    * Note the editor has an added panel with the contents of your storyboard. This is called your __Document Outline__
     * Note the inspectors panel has more inspectors available.
 2. Open the Library to add something to your view.
 ![Storyboard](./imgs/storyboard.png)
@@ -321,13 +348,14 @@ At the bottom of the storyboard, you should have a device for the current storyb
 I'm guessing the label doesn't seem to be in the right place anymore.
 
 ### Anatomy of a constraint
-You can set constraints based off of attributes of two views. There are constants you can add or subtract relative to these attributes and use multipliers to base it off of a view's size.
+You can set constraints based off of attributes of two views. A constraint represents a relationship between those two views. You can use constants to add or subtract relative to these attributes and use multipliers to base it off of one of the views' size.
 
-![anatomy of constraint](./imgs/constraint-anatomy.png)
+![anatomy of constraint](./imgs/constraint-anatomy.png =400x)
+
 
 Views have several attributes you can use to create constraints.
 
-![view attributes](./imgs/constraints.png)
+![view attributes](./imgs/constraints.png =400x)
 
 You can write code to define these constraints, but interface builder has made it easy to create them.
 
@@ -337,9 +365,11 @@ So let's play around with constraints!
 
 1. In your storyboard, hold down Ctrl and drag between your label and the main view. A drop down menu should appear with options for constraints based on the attributes of your label and the main view.
 2. Select `Center Horizontally in Safe Area`
-3. Once you set your first constraint, Interface Builder will now start bugging you until you set __all the constraints required__. That's what that red arrow means.
-![storyboard constraints](./imgs/storyboard_constraints.png)
-You'll also note that constraints are now showing in the storyboard's document outline.
+3. Once you set your first constraint, Interface Builder will now start bugging you until you set __all the constraints required__. That's what that red arrow means. You'll also note that constraints are now showing in the storyboard's document outline.
+
+![storyboard constraints](./imgs/storyboard_constraints.png =400x)
+
+
 4. Continue and make another constraint by following step 1 again and selecting `Center Vertically in Safe Area`
 5. The arrow should turn yellow/orange meaning the item is just misplaced, but we've defined enough constraints for it to build. Click on the yellow arrow, and fix the misplacement.
 6. Run your app again.
@@ -356,15 +386,17 @@ Okay, time to build a Magic 8 Ball App.
     3. Equal Widths
     4. Equal Heights
 3. Reorder the different views in the document outline. Put the imageview behind the label by placing it between the safe area and the label.
-4. Select the image view in the document outline and open the attributes inspector the image. You'll note that at the top, there's an option to select an image.
+4. Select the image view in the document outline and open the attributes inspector. You'll note that at the top, there's an option to select an image.
 5. Select `Magic8_lg_margins` for the image. You should see the image for a Magic 8 Ball, but stretched in an odd way.
 6. Change `Content Mode` to `Aspect Fill`
 7. Select your "Hello, World!" label in the document outline
-8. In the attributes inspector, change the content of your label to "Answer", and change the font/text color to make it clearer.
-9. Pull up the library on more time, and drag in a `Tap Gesture Recognizer`. This won't be used until later.
+8. In the attributes inspector, change the content of your label to "Ask a Question", and change the font/text color to make it clearer.
+9. Feel free to change the constraints for the label to fit in the triangle.
+10. Pull up the library on more time, and drag in a `Tap Gesture Recognizer`. This won't be used until later.
 
 You should have something like this in the storyboard
-![Magic 8 Storyboard](./imgs/magic8_storyboard.png)
+![Magic 8 Storyboard](./imgs/magic8_storyboard.png =300x)
+
 
 ### Set up the logic
 1. With the storyboard still open, open the Assistant Editor. (Check the tools section if you can't find it)
@@ -387,5 +419,26 @@ Run your app. Try tapping on the screen of the simulator.
 ![Celebrate!](https://media.giphy.com/media/tLQfm7dmGqxfa/giphy.gif)
 
 YOU DID IT!
+
+### Some extra fun
+* Test out the label -- you may need to change the constraints to fit all possible strings.
+* Try using a shake gesture instead of a tap gesture 
+    1. Shake gestures are not available in the library, so you'll have to add `motionEnded` function to your `ViewController.swift`. The parent class of ViewController.swift is aware of motion events, and you can override it in your subclass.
+    ```swift
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        
+    }
+    ```
+    2. Inside this function, check if the `motion` argument passed in the function is equal to `.motionShake`. If so, change the answer label as you did for the tap gesture
+* Try connecting the image as an IBOutlet, and animating it when you shake/tap. 
+    1. If you haven't already, add the imageview as an interface builder outlet, like we did the label.
+    2. Create a new file in your navigator panel. 
+    3. Choose a regular Swift file. 
+    4. Name it `UIView+Animations.swift`
+    5. [Add this extension](https://gist.github.com/mourad-brahim/cf0bfe9bec5f33a6ea66) You'll want to add the correction for Swift 4. This creates a function `shake` available to all UIViews that animates a shake. 
+    6. This will give you one error -- change `kCAMediaTimingFunctionLinear` to `.linear` and you should be all set.
+    7. In the `motionEnded` function, right before you change the text in the label, call `shake` on your image view. This will trigger the animation.
+
+
 
 
