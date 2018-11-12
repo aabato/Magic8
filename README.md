@@ -1,33 +1,48 @@
-# iOS Workshop
-This workshop will walk you through some very basic Swift and help you explore Xcode, storyboards, and view controllers. This will be self-paced. 
+# iOS Workshop - Contents
+
+This workshop will walk you through some very basic Swift and help you explore Xcode, storyboards, and view controllers. This will be self-paced.
+
+Environment Requirements:
+* Make sure you have Xcode 10.1 installed
+* Make sure you have access to `Fundamentals.playground` and `Magic8.xcodeproj`. 
 
 <!-- TOC -->
 
-- [iOS Workshop](#ios-workshop)
-    - [Swift Fundamentals](#swift-fundamentals)
-        - [`let` vs. `var`](#let-vs-var)
-        - [Data types](#data-types)
-            - [Integers](#integers)
-            - [Floats](#floats)
-            - [Boolean](#boolean)
-            - [Strings](#strings)
-        - [Collection Types](#collection-types)
-            - [Arrays](#arrays)
-            - [Dictionaries](#dictionaries)
-    - [Loops and Functions](#loops-and-functions)
-        - [For-loops](#for-loops)
-        - [Functions](#functions)
+- [iOS Workshop - Contents](#ios-workshop---contents)
+- [Swift Fundamentals](#swift-fundamentals)
+    - [`let` vs. `var`](#let-vs-var)
+        - [__Exercise 1__](#exercise-1)
+    - [Data types](#data-types)
+        - [Integers](#integers)
+        - [__Exercise 2__](#exercise-2)
+        - [Floats](#floats)
+        - [Boolean](#boolean)
+        - [Strings](#strings)
+        - [__Exercise 3__](#exercise-3)
+    - [Collection Types](#collection-types)
+        - [Arrays](#arrays)
+        - [__Exercise 4__](#exercise-4)
+        - [__Exercise 5__](#exercise-5)
+        - [Dictionaries](#dictionaries)
+    - [For-loops](#for-loops)
+        - [__Exercise 6__](#exercise-6)
+    - [Functions](#functions)
         - [Anatomy of a function](#anatomy-of-a-function)
-        - [Learn more Swift](#learn-more-swift)
-    - [Storyboards](#storyboards)
-        - [Tools](#tools)
+        - [__Exercise 7__](#exercise-7)
+    - [Learn more Swift](#learn-more-swift)
+- [Storyboards](#storyboards)
+    - [Tools](#tools)
+    - [Build your first view](#build-your-first-view)
+    - [Constraints](#constraints)
+        - [Anatomy of a constraint](#anatomy-of-a-constraint)
+    - [Build the Magic 8 Ball](#build-the-magic-8-ball)
 
 <!-- /TOC -->
 
-## Swift Fundamentals
+# Swift Fundamentals
 Open `Fundamentals.playground` to follow along with Exercises.
 
-### `let` vs. `var`
+## `let` vs. `var`
 There are two ways you can initialize a variable: using `let` and `var`
 
 `let` makes the value *immutable*, meaning it cannot be changed after it has been initialized
@@ -42,29 +57,37 @@ print(myNum)  // 5
 let myImmutableNum = 1
 myImmutableNum = 2 + 3 // ??
 ```
-> <strong>Exercise 1</strong>: What happens if you try to reassign a `let` variable?
+-------
+### __Exercise 1__
+<em>What happens if you try to reassign a `let` variable?</em>
 
-### Data types
-#### Integers
+-------
+## Data types
+### Integers
 Integers are a primitive value type that represents a non-fractional number. This means only whole numbers. All mathematical operations with integers will result in an integer.
 ```swift
 let myInteger: Int = 1
 print(myInteger - 1) // 0
 ```
-> <strong>Exercise 2</strong>: What happens if you divide `myInteger` with 2?
-#### Floats
+------
+### __Exercise 2__
+What happens if you divide `myInteger` with 2?
+
+------
+
+### Floats
 Floats are a primitive value type that represents a fractional number. Any math with floats will result in a float.
 ```swift
 let myFloat: CGFloat = 1.0
 print(myFloat / 2) // 0.5
 ```
-#### Boolean
+### Boolean
 Boolean is a value type that can only hold `true` or `false`.
 ```swift
 let myBool: Bool = myFloat > 0.5
 print(myBool) // true
 ```
-#### Strings
+### Strings
 Strings are any series of characters.
 ```swift
 let myStr = "My name is Angelica"
@@ -84,10 +107,15 @@ let myString = "Hello everyone"
 let subStr = myString.prefix(5) // Hello
 let otherSubStr = myString.suffix(8) // everyone
 ```
-> <strong>Exercise 3</strong>: Print out a string that says "Hello, world!"
-### Collection Types
+-----
+### __Exercise 3__
+Print out a string that says "Hello, world!"
+
+-----
+
+## Collection Types
 There are several ways to represent a collection of data -- two of them being Arrays and Dictionaries.
-#### Arrays
+### Arrays
 Arrays are a basic collection type. You can define the type of object that is allowed to be stored within it. The order you place items in the array will matter.
 
 ```swift
@@ -144,14 +172,16 @@ You can find a random element using `randomElement`
 let arr = ["First", "Second", "Third", "Fourth"]
 let random = arr.randomElement()
 ```
-<blockquote> 
-<strong>Exercise 4</strong>: Print out an array that includes several countries (You pick the places!)  
+-----
+### __Exercise 4__
+Print out an array that includes several countries (You pick the places!)  
 
-<strong>Exercise 5</strong>: Print out the number of items in your array
+### __Exercise 5__ 
+Print out the number of items in your array
 
-</blockquote>
+-----
 
-#### Dictionaries
+### Dictionaries
 Dictionaries are another collection type, but you can define the key yourself. Also, *order does not matter and cannot be guaranteed.*
 
 ```swift
@@ -184,8 +214,7 @@ print(dictionary.values)
 ```
 `keys` and `values` can be iterated over like arrays.
 
-## Loops and Functions
-### For-loops
+## For-loops
 ```swift
 for item in arrayOfThings {
     print(item)
@@ -203,9 +232,12 @@ for (key, value) in dictionaryOfThings {
     print("Key: \(key), Value: \(value))
 }
 ```
-> <strong>Exercise 6</strong>: Use a for-loop to print out "Hello, __!" for each place in your array from Exercise 4
+-----
+### __Exercise 6__
+Use a for-loop to print out "Hello, __!" for each place in your array from Exercise 4
 
-### Functions
+-----
+## Functions
 Functions are a great way to compartmentalize code into chunks.
 
 ### Anatomy of a function
@@ -239,15 +271,75 @@ func printHelloWorld() {
 
 printHelloWorld() // Hello, World!
 ```
+-----
+### __Exercise 7__
+Create a function that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array.
 
-> <strong>Exercise 7</strong>: Create a function that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array.
+-----
 
-### [Learn more Swift](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
+## [Learn more Swift](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
 
 There are extra exercises included in `Fundamentals.playground`
 
-## Storyboards
+# Storyboards
 Open `Magic8.xcodeproj` to follow along this portion of the workshop
 
-### Tools
+## Tools
+Xcode is a robust IDE (Integrated Development Environment) and has a ton of tools available to developers.
+
+At the top left corner, you can find a button to run, build or test your app, based on the simulator you've chosen.
+
+You can also open/close the navigator, the debugger, and inspectors on the top right corner.
+
 ![Tools](./imgs/tools.png)
+
+## Build your first view
+1. Open your navigator and find `Main.storyboard`. 
+    * Note the View Controller that has been created for you.
+    * The arrow on the left indicates that this is the initial view controller.
+    * Note the editor has an added panel with the contents of your storyboard
+    * Note the inspectors panel has more inspectors available.
+2. Open the Library to add something to your view.
+![Storyboard](./imgs/storyboard.png)
+3. Look for a Label in the Library and drag it into your view controller's view. 
+![Label](./imgs/library-label.png)  
+4. Edit the contents of the label to "Hello, World!"
+5. While the label is selected, find the attributes inspector in the inspectors panel.
+![Attributes Inspector](./imgs/attributes-inspector.png)
+6. Feel free to customize your label by editing values in the attributes inspector.
+7. Run your app on a simulator of your choosing.
+
+Congratulations! Your first view is on the screen! But...
+
+## Constraints
+At the bottom of the storyboard, you should have a device for the current storyboard view. Try changing this device or orientation.
+
+I'm guessing the label doesn't seem to be in the right place anymore.
+
+### Anatomy of a constraint
+You can set constraints based off of attributes of two views. There are constants you can add or subtract relative to these attributes and use multipliers to base it off of a view's size.
+
+![anatomy of constraint](./imgs/constraint-anatomy.png)
+
+Views have several attributes you can use to create constraints.
+
+![view attributes](./imgs/constraints.png)
+
+You can write code to define these constraints, but interface builder has made it easy to create them.
+
+So let's play around with constraints!
+
+![img](./imgs/constraint.gif)
+
+1. In your storyboard, hold down Ctrl and drag between your label and the main view. A drop down menu should appear with options for constraints based on the attributes of your label and the main view.
+2. Select `Center Horizontally in Safe Area`
+3. Once you set your first constraint, Interface Builder will now start bugging you until you set __all the constraints required__. That's what that red arrow means.
+![storyboard constraints](./imgs/storyboard_constraints.png)
+You'll also note that constraints are now showing in the storyboard's document outline.
+4. Continue and make another constraint by following step 1 again and selecting `Center Vertically in Safe Area`
+5. The arrow should turn yellow/orange meaning the item is just misplaced, but we've defined enough constraints for it to build. Click on the yellow arrow, and fix the misplacement.
+6. Run your app again.
+
+Hurray! It's in the right place now!
+
+## Build the Magic 8 Ball
