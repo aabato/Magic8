@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,57 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Magic8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Magic8_lg_margins" translatesAutoresizingMaskIntoConstraints="NO" id="dM5-Xt-PBb">
+                                <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="PwG-XX-WLN" appends="YES" id="j1n-lb-dBd"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask a Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mm-ZY-I7H">
+                                <rect key="frame" x="172" y="415.5" width="70" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="UgB-Bq-iUZ"/>
+                                    <constraint firstAttribute="width" constant="70" id="bg2-iC-IdF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="3mm-ZY-I7H" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NLO-qd-HBH"/>
+                            <constraint firstItem="dM5-Xt-PBb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OZX-H7-rLR"/>
+                            <constraint firstItem="3mm-ZY-I7H" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Q4G-Xj-iAR"/>
+                            <constraint firstItem="dM5-Xt-PBb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="WKK-k3-reD"/>
+                            <constraint firstItem="dM5-Xt-PBb" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="gnk-Tr-pMF"/>
+                            <constraint firstItem="dM5-Xt-PBb" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="hFI-fg-Uy3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="answerLabel" destination="3mm-ZY-I7H" id="qZj-o5-R9Y"/>
+                        <outlet property="magic8BallImage" destination="dM5-Xt-PBb" id="gu1-aX-gNZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PwG-XX-WLN">
+                    <connections>
+                        <action selector="tapGestureRecognized:" destination="BYZ-38-t0r" id="Hm4-4A-rkl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="-39.130434782608695" y="20.758928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Magic8_lg_margins" width="988" height="990"/>
+    </resources>
 </document>
