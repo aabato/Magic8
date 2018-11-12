@@ -36,6 +36,8 @@ Environment Requirements:
     - [Constraints](#constraints)
         - [Anatomy of a constraint](#anatomy-of-a-constraint)
     - [Build the Magic 8 Ball](#build-the-magic-8-ball)
+        - [Set up the view](#set-up-the-view)
+        - [Set up the logic](#set-up-the-logic)
 
 <!-- /TOC -->
 
@@ -309,7 +311,7 @@ You can also open/close the navigator, the debugger, and inspectors on the top r
 6. Feel free to customize your label by editing values in the attributes inspector.
 7. Run your app on a simulator of your choosing.
 
-Congratulations! Your first view is on the screen! But...
+🎉🎉🎉 Congratulations! 🎉🎉🎉 Your first view is on the screen! But...
 
 ## Constraints
 At the bottom of the storyboard, you should have a device for the current storyboard view. Try changing this device or orientation.
@@ -343,3 +345,20 @@ You'll also note that constraints are now showing in the storyboard's document o
 Hurray! It's in the right place now!
 
 ## Build the Magic 8 Ball
+Okay, time to build a Magic 8 Ball App.
+### Set up the view
+1. Open the library again (just like you did to find the label) and drag in an `ImageView`
+2. Set the constraints for the imageview relative to the main view:
+    1. Center Horizontally in Safe Area
+    2. Center Vertically in Safe Area
+    3. Equal Widths
+    4. Equal Heights
+3. Reorder the different views in the document outline. Put the imageview behind the label by placing it between the safe area and the label.
+4. Select the image view in the document outline and open the attributes inspector the image. You'll note that at the top, there's an option to select an image.
+5. Select `Magic8` for the image. You should see the image for a Magic 8 Ball, but stretched in an odd way.
+6. Change `Content Mode` to `Aspect Fill`
+7. Select your "Hello, World!" label in the document outline
+8. In the attributes inspector, change the content of your label to "Answer", and change the font/color to make it clearer.
+
+### Set up the logic
+
