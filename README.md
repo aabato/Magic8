@@ -361,12 +361,11 @@ I'm guessing the label doesn't seem to be in the right place anymore.
 ### Anatomy of a constraint
 You can set constraints based off of attributes of two views. A constraint represents a relationship between those two views. You can use constants to add or subtract relative to these attributes and use multipliers to base it off of one of the views' size.
 
-![anatomy of constraint](./imgs/constraint-anatomy.png)
-
+<img src="./imgs/constraint-anatomy.png" width=450 alt="Anatomy of a Constraint">
 
 Views have several attributes you can use to create constraints.
 
-![view attributes](./imgs/constraints.png )
+<img src="./imgs/constraints.png" width=450 alt="Different attributes">
 
 You can write code to define these constraints, but interface builder has made it easy to create them.
 
@@ -378,7 +377,7 @@ So let's play around with constraints!
 2. Select `Center Horizontally in Safe Area`
 3. Once you set your first constraint, Interface Builder will now start bugging you until you set __all the constraints required__. That's what that red arrow means. You'll also note that constraints are now showing in the storyboard's document outline.
 
-![storyboard constraints](./imgs/storyboard_constraints.png)
+<img src="./imgs/storyboard_constraints.png" alt="New constraints" width=400>
 
 4. Continue and make another constraint by following step 1 again and selecting `Center Vertically in Safe Area`
 5. The arrow should turn yellow/orange meaning the item is just misplaced, but we've defined enough constraints for it to build. Click on the yellow arrow, and fix the misplacement.
@@ -405,8 +404,8 @@ Okay, time to build a Magic 8 Ball App.
 10. Pull up the library on more time, and drag in a `Tap Gesture Recognizer`. This won't be used until later.
 
 You should have something like this in the storyboard
-![Magic 8 Storyboard](./imgs/magic8_storyboard.png)
 
+<img src="./imgs/magic8_storyboard.png" height=500>
 
 ### Set up the logic
 1. With the storyboard still open, open the Assistant Editor. (Check the tools section if you can't find it)
