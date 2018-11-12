@@ -284,6 +284,8 @@ Create a function that takes an array of places and returns "Hello, ___!", filli
 There are extra exercises included in `Fundamentals.playground`
 
 # Storyboards
+We'll get back to Swift in a bit. For now, let's look at some storyboards.
+
 Open `Magic8.xcodeproj` to follow along this portion of the workshop
 
 ## Tools
@@ -355,10 +357,35 @@ Okay, time to build a Magic 8 Ball App.
     4. Equal Heights
 3. Reorder the different views in the document outline. Put the imageview behind the label by placing it between the safe area and the label.
 4. Select the image view in the document outline and open the attributes inspector the image. You'll note that at the top, there's an option to select an image.
-5. Select `Magic8` for the image. You should see the image for a Magic 8 Ball, but stretched in an odd way.
+5. Select `Magic8_lg_margins` for the image. You should see the image for a Magic 8 Ball, but stretched in an odd way.
 6. Change `Content Mode` to `Aspect Fill`
 7. Select your "Hello, World!" label in the document outline
-8. In the attributes inspector, change the content of your label to "Answer", and change the font/color to make it clearer.
+8. In the attributes inspector, change the content of your label to "Answer", and change the font/text color to make it clearer.
+9. Pull up the library on more time, and drag in a `Tap Gesture Recognizer`. This won't be used until later.
+
+You should have something like this in the storyboard
+![Magic 8 Storyboard](./imgs/magic8_storyboard.png)
 
 ### Set up the logic
+1. With the storyboard still open, open the Assistant Editor. (Check the tools section if you can't find it)
+2. The starter project we're using already tied this view controller in your storyboard to a Swift file called `ViewController.swift`.
+3. ViewController.swift should have the class ViewController declared and one function: `viewDidLoad`.
+4. Select the Answer label in the storyboard and (just like when doing constraints) hold down Ctrl, click and drag between the label and the assitant editor, right above the `viewDidLoad` function.
+![Add outlet](./imgs/add_outlet.gif)
+5. Check to see if the popup say it has an `Outlet` connection, and it is for type `UILabel`. 
+6. For the name, set it to `answerLabel` and click Connect. You have just made your first interface builder outlet; it should look like a typical variable of type `UILabel`. This allows us to change attributes of the label in the code.
+7. Above the `viewDidLoad` function and the outlet you just created, create an array of all the possible answers. [Wikipedia has all of them](https://en.wikipedia.org/wiki/Magic_8-Ball)
+8. Time to connect the Tap Gesture Recognizer we added earlier! From the document outline, drag the Tap Gesture Recongnizer to the assistant editor, placing it below `viewDidLoad`.
+![Add action](./imgs/add_action.gif)
+9. Check to see if the popup has an `Action` connection for Type `Any`.
+10. For the name, set it to `tapGestureRecognized` and click Connect. This is your first interface builder action. It should look like a function. This allows us to run code when the app recognizes a tap event.
+11. Inside your `tapGestureRecognized` function, create a variable that stores a random element from your array of answers (Told you our Swift work would come back!)
+12. `UILabel`s have a property called `text` that represents the text in a label. Set your random answer string as our `answerLabel`'s `text`.
+
+Run your app. Try tapping on the screen of the simulator.
+
+![Celebrate!](https://media.giphy.com/media/tLQfm7dmGqxfa/giphy.gif)
+
+YOU DID IT!
+
 
