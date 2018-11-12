@@ -39,7 +39,10 @@ Environment Requirements:
     - [Build the Magic 8 Ball](#build-the-magic-8-ball)
         - [Set up the view](#set-up-the-view)
         - [Set up the logic](#set-up-the-logic)
-        - [Some extra fun](#some-extra-fun)
+    - [Some extra fun](#some-extra-fun)
+        - [Test out the label](#test-out-the-label)
+        - [Try using a shake gesture instead of a tap gesture](#try-using-a-shake-gesture-instead-of-a-tap-gesture)
+        - [Add a shake animation](#add-a-shake-animation)
 
 <!-- /TOC -->
 
@@ -171,11 +174,13 @@ let arr = ["First", "Second", "Third", "Fourth"]
 print(arr.last) // "Fourth"
 ```
 
-You can find a random element using `randomElement`
+You can find a random element using `randomElement`*
 ```swift
 let arr = ["First", "Second", "Third", "Fourth"]
 let random = arr.randomElement()
 ```
+ Note: `randomElement` returns an optional. This just means that it is possible to get `nil` back. (This happens if the array is empty.)
+
 -----
 ### __Exercise 4__
 Print out an array that includes several countries (You pick the places!)  
@@ -277,6 +282,12 @@ func sumOf(_ a: Int, _ b: Int) -> Int {
 }
 
 let result = sumOf(3, 4) // 7
+
+func hypotenuse(_ a: Int, _ b: Int) -> Int {
+    return (a*a + b*b).squareRoot()
+}
+
+let c = hypotenuse(3, 4) // 5
 ```
 
 If you don't need to return a value, you can return `Void` or not include a return type.
@@ -307,7 +318,7 @@ To make it fancier, pass two arguments: the array of places and a boolean. The b
 
 ## Learn more Swift
 
-* Check out [Swift.org Basics] to learn more Swift(https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
+* Check out [Swift.org Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) to learn more Swift
 * There are extra exercises included in `Fundamentals.playground`
 
 # Storyboards
@@ -363,7 +374,7 @@ So let's play around with constraints!
 
 ![img](./imgs/constraint.gif)
 
-1. In your storyboard, hold down Ctrl and drag between your label and the main view. A drop down menu should appear with options for constraints based on the attributes of your label and the main view.
+1. In your storyboard, hold down `ctrl` and drag between your label and the main view. A drop down menu should appear with options for constraints based on the attributes of your label and the main view.
 2. Select `Center Horizontally in Safe Area`
 3. Once you set your first constraint, Interface Builder will now start bugging you until you set __all the constraints required__. That's what that red arrow means. You'll also note that constraints are now showing in the storyboard's document outline.
 
@@ -420,24 +431,33 @@ Run your app. Try tapping on the screen of the simulator.
 
 YOU DID IT!
 
-### Some extra fun
-* Test out the label -- you may need to change the constraints to fit all possible strings.
-* Try using a shake gesture instead of a tap gesture 
-    1. Shake gestures are not available in the library, so you'll have to add `motionEnded` function to your `ViewController.swift`. The parent class of ViewController.swift is aware of motion events, and you can override it in your subclass.
-    ```swift
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        
-    }
-    ```
-    2. Inside this function, check if the `motion` argument passed in the function is equal to `.motionShake`. If so, change the answer label as you did for the tap gesture
-* Try connecting the image as an IBOutlet, and animating it when you shake/tap. 
-    1. If you haven't already, add the imageview as an interface builder outlet, like we did the label.
-    2. Create a new file in your navigator panel. 
-    3. Choose a regular Swift file. 
-    4. Name it `UIView+Animations.swift`
-    5. [Add this extension](https://gist.github.com/mourad-brahim/cf0bfe9bec5f33a6ea66) You'll want to add the correction for Swift 4. This creates a function `shake` available to all UIViews that animates a shake. 
-    6. This will give you one error -- change `kCAMediaTimingFunctionLinear` to `.linear` and you should be all set.
-    7. In the `motionEnded` function, right before you change the text in the label, call `shake` on your image view. This will trigger the animation.
+## Some extra fun
+### Test out the label
+You may need to change the constraints to fit all possible strings.
+1. You'll likely have to create height and width constraints to make the text fit perfectly in the triangle
+2. Go to the label's attribute inspector and change `Lines` to `0` to keep from restricting the number of lines allowed in the label.
+3. Change `Line Break` to `Word Wrap`
+   
+### Try using a shake gesture instead of a tap gesture 
+
+1. Shake gestures are not available in the library, so you'll have to add `motionEnded` function to your `ViewController.swift`. The parent class of ViewController.swift is aware of motion events, and you can override it in your subclass.
+```swift
+override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+    
+}
+```
+2. Inside this function, check if the `motion` argument passed in the function is equal to `.motionShake`. If so, change the answer label as you did for the tap gesture
+   
+### Add a shake animation
+Try connecting the image as an IBOutlet, and animating it when you shake/tap. 
+
+1. If you haven't already, add the imageview as an interface builder outlet, like we did the label.
+2. Create a new file in your navigator panel. 
+3. Choose a regular Swift file. 
+4. Name it `UIView+Animations.swift`
+5. [Add this extension](https://gist.github.com/mourad-brahim/cf0bfe9bec5f33a6ea66) You'll want to add the correction for Swift 4. This creates a function `shake` available to all UIViews that animates a shake. 
+6. This will give you one error -- change `kCAMediaTimingFunctionLinear` to `.linear` and you should be all set.
+7. In the `motionEnded` function, right before you change the text in the label, call `shake` on your image view. This will trigger the animation.
 
 
 
