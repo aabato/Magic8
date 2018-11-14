@@ -223,6 +223,47 @@ print(dictionary.values)
 ```
 `keys` and `values` can be iterated over like arrays.
 
+## Value Types vs. Reference Types
+Types fall into two categories: value and reference types. For value types, each instance keeps a unique copy of its data, like `struct`s or `enum`s. For reference types, instances share a single copy of the data, and we pass around the reference to that instance instead. This is usually defined as a `class`. 
+
+-----
+### __Exercise 6__ Create a struct and a class with the same property.
+```swift
+struct myStruct {
+    var data: Int = -1
+}
+
+//Initialize an instance of your struct, name it "a"
+var a = myStruct()
+var b = a
+a.data = 42
+
+// What does a and b equal?
+
+
+class myClass {
+    var data: Int = -1
+}
+
+var x = myClass()
+var y = x
+x.data = 42
+
+// What does x and y equal?
+```
+----
+
+__Why is this important?__ Most apps are multi-threaded, meaning it runs processes all at the same time. Mutating an instance is the easiest way to run into problems when accessing values from your variables. When you use reference types and you pass that reference through multiple threads, you can't be certain what you'll get back.
+
+If you look at Dictionaries, Arrays, Strings -- all of these are value types (`struct`s). This is to make sure that the values aren't mutated. 
+
+But reference types still exist in iOS development.
+
+Classes were predominantly used in the past, and Cocoa and Cocoa Touch (the UI libraries used in iOS) were all build on these. So if you see `class` you know these are reference types and we should be careful to pass those reference around in an app.
+
+## Properties
+
+
 ## For-loops
 For loops are a great way to iterate through arrays or other collections.
 
@@ -254,7 +295,7 @@ for (key, value) in dictionaryOfThings {
 }
 ```
 -----
-### __Exercise 6__
+### __Exercise 7__
 Use a for-loop to print out "Hello, __!" for each place in your array from Exercise 4
 
 -----
@@ -309,7 +350,7 @@ func printHelloWorld() {
 printHelloWorld() // Hello, World!
 ```
 -----
-### __Exercise 7__
+### __Exercise 8__
 Create a function that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array. 
 
 To make it fancier, pass two arguments: the array of places and a boolean. The boolean will determine if the the string returned will say "Good Morning, ___" or "Good Evening, __ ".
