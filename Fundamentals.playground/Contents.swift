@@ -45,32 +45,73 @@ print(randomGreeting(with: arrOfCountries, true))
 
 // Exercise 8:
 //Create a struct with a data property. Give it an initial value.
+struct MyStruct {
+    var data: Int = -1
+}
 
 //Initialize an instance of your struct, name it "a"
+var a = MyStruct()
 
 //Create a variable "b" and make it equal to "a"
+var b = a
 
 //Change the data property of "a"
+a.data = 42
 
 //What does a and b equal?
+print(a, b)
+print(a.data, b.data)
 
 //Create a class with a data property. Give it an initial value. It should look almost exactly the same as your struct.
+class MyClass {
+    var data: Int = -1
+}
 
 //Initialize an instance of your class, name it "x"
+var x = MyClass()
 
 //Create another variable "y" and make it equal to "x"
+var y = x
 
 //Change the data property of "x"
+x.data = 42
 
 //What does x and y equal?
-
+print(x, y)
+print(x.data, y.data)
 
 
 // Exercise 9: Create a struct `Person` that represents a person. Give it a few properties (i.e. First Name, Last Name, Age, etc). Go crazy.
+struct Person {
+    var name: String
+    var age: Int
+    var pets: [String]
+    
+}
 
+let me = Person(name: "Angelica", age: 30, pets: [])
+print(me)
 
 // Exercise 10: Add some instance methods to your Person struct. Try `func greeting()` to have your person instances say "Hello!". If you gave your Person struct a property for `name` and `age`, try `func happyBirthday()` to print out "Happy Birthday {Person's Name}" and update the person's age. Otherwise, think of other instance methods you'd want your `Person` struct to have.
 
+struct Person2 {
+    var name: String
+    var age: Int
+    var pets: [String]
+    
+    func greeting() {
+        print("Hello!")
+    }
+    
+    mutating func happyBirthday() {
+        age += 1
+        print("Happy Birthday, \(name)")
+    }
+}
+
+var meAgain = Person2(name: "Angelica", age: 30, pets: [])
+meAgain.happyBirthday()
+print(meAgain)
 
 /**************************
     Extra exercises
