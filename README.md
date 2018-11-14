@@ -2,10 +2,41 @@
 
 This workshop will walk you through some very basic Swift and help you explore Xcode, storyboards, and view controllers. This will be self-paced.
 
-Environment Requirements:
+Ideal Environment Requirements:
 * Make sure you have Xcode 10.1 installed
 * Make sure you have access to `Fundamentals.playground` and `Magic8.xcodeproj`. 
 
+
+<blockquote>
+<strong> Oh, no! I forgot to install Xcode</strong>
+
+If you do not have Xcode installed but have another IDE like Sublime Text, Atom, or VSCode you can do the Swift Fundamentals portions using any of these editors. Check that you have the most up-to-date Swift Version.
+
+```bash
+$ which swift
+/usr/bin/swift
+
+$ swift --version
+Apple Swift version 4.2.1 (swiftlang-1000.11.42 clang-1000.11.45.1)
+```
+
+Instead of using the playground, you can create your own swift file with this at the top of the file:
+
+```swift
+#!/usr/bin/swift
+```
+
+Change the permissions for the file to be executable
+```bash
+chmod u+rwx MyFile.swift
+```
+
+And in your terminal, you can call `./MyFile.swift` to see the output!
+
+Unfortunately, for the storyboard portion, you'll have to peer program with someone who does have Xcode. 
+
+👫👭👬
+</blockquote>
 <!-- TOC -->
 
 - [iOS Workshop - Contents](#ios-workshop---contents)
