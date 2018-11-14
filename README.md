@@ -11,25 +11,31 @@ Environment Requirements:
 - [iOS Workshop - Contents](#ios-workshop---contents)
 - [Swift Fundamentals](#swift-fundamentals)
     - [`let` vs. `var`](#let-vs-var)
-        - [__Exercise 1__](#exercise-1)
+        - [__Exercise 1__](#__exercise-1__)
     - [Data types](#data-types)
         - [Integers](#integers)
-        - [__Exercise 2__](#exercise-2)
+        - [__Exercise 2__](#__exercise-2__)
         - [Floats](#floats)
         - [Boolean](#boolean)
         - [Strings](#strings)
-        - [__Exercise 3__](#exercise-3)
+        - [__Exercise 3__](#__exercise-3__)
     - [Collection Types](#collection-types)
         - [Arrays](#arrays)
-        - [__Exercise 4__](#exercise-4)
-        - [__Exercise 5__](#exercise-5)
+        - [__Exercise 4__](#__exercise-4__)
+        - [__Exercise 5__](#__exercise-5__)
         - [Dictionaries](#dictionaries)
     - [For-loops](#for-loops)
-        - [__Exercise 6__](#exercise-6)
+        - [__Exercise 6__](#__exercise-6__)
     - [If-Else](#if-else)
     - [Functions](#functions)
         - [Anatomy of a function](#anatomy-of-a-function)
-        - [__Exercise 7__](#exercise-7)
+        - [__Exercise 7__](#__exercise-7__)
+    - [Value Types vs. Reference Types](#value-types-vs-reference-types)
+        - [__Exercise 8__ Follow the steps below](#__exercise-8__-follow-the-steps-below)
+    - [Properties](#properties)
+        - [__Exercise 9__](#__exercise-9__)
+    - [Instance Methods](#instance-methods)
+        - [__Exercise 10__](#__exercise-10__)
     - [Learn more Swift](#learn-more-swift)
 - [Storyboards](#storyboards)
     - [Tools](#tools)
@@ -223,47 +229,6 @@ print(dictionary.values)
 ```
 `keys` and `values` can be iterated over like arrays.
 
-## Value Types vs. Reference Types
-Types fall into two categories: value and reference types. For value types, each instance keeps a unique copy of its data, like `struct`s or `enum`s. For reference types, instances share a single copy of the data, and we pass around the reference to that instance instead. This is usually defined as a `class`. 
-
------
-### __Exercise 6__ Create a struct and a class with the same property.
-```swift
-struct myStruct {
-    var data: Int = -1
-}
-
-//Initialize an instance of your struct, name it "a"
-var a = myStruct()
-var b = a
-a.data = 42
-
-// What does a and b equal?
-
-
-class myClass {
-    var data: Int = -1
-}
-
-var x = myClass()
-var y = x
-x.data = 42
-
-// What does x and y equal?
-```
-----
-
-__Why is this important?__ Most apps are multi-threaded, meaning it runs processes all at the same time. Mutating an instance is the easiest way to run into problems when accessing values from your variables. When you use reference types and you pass that reference through multiple threads, you can't be certain what you'll get back.
-
-If you look at Dictionaries, Arrays, Strings -- all of these are value types (`struct`s). This is to make sure that the values aren't mutated. 
-
-But reference types still exist in iOS development.
-
-Classes were predominantly used in the past, and Cocoa and Cocoa Touch (the UI libraries used in iOS) were all build on these. So if you see `class` you know these are reference types and we should be careful to pass those reference around in an app.
-
-## Properties
-
-
 ## For-loops
 For loops are a great way to iterate through arrays or other collections.
 
@@ -295,7 +260,7 @@ for (key, value) in dictionaryOfThings {
 }
 ```
 -----
-### __Exercise 7__
+### __Exercise 6__
 Use a for-loop to print out "Hello, __!" for each place in your array from Exercise 4
 
 -----
@@ -350,12 +315,139 @@ func printHelloWorld() {
 printHelloWorld() // Hello, World!
 ```
 -----
-### __Exercise 8__
+### __Exercise 7__
 Create a function that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array. 
 
 To make it fancier, pass two arguments: the array of places and a boolean. The boolean will determine if the the string returned will say "Good Morning, ___" or "Good Evening, __ ".
 
 -----
+
+## Value Types vs. Reference Types
+Types fall into two categories: value and reference types. For value types, each instance keeps a unique copy of its data, like `struct`s or `enum`s. For reference types, instances share a single copy of the data, and we pass around the reference to that instance instead. This is usually defined as a `class`. 
+
+-----
+### __Exercise 8__ Follow the steps below
+```swift
+
+//Create a struct with a data property. Give it an initial value.
+struct myStruct {
+    var data: Int = -1
+}
+
+//Initialize an instance of your struct, name it "a"
+var a = myStruct()
+
+//Create a variable "b" and make it equal to "a"
+var b = a
+
+//Change the data property of "a"
+a.data = 42
+
+// What does a and b equal?
+print(a, b)
+print(a.data, b.data)
+
+//Create a class with a data property. Give it an initial value. It should look almost exactly the same as your struct.
+class myClass {
+    var data: Int = -1
+}
+
+//Initialize an instance of your class, name it "x"
+var x = myClass()
+
+//Create another variable "y" and make it equal to "x"
+var y = x
+
+//Change the data property of "x"
+x.data = 42
+
+// What does x and y equal?
+print(x, y)
+print(x.data, y.data)
+```
+----
+
+__Why is this important?__ Most apps are multi-threaded, meaning it runs processes all at the same time. Mutating a reference type is the easiest way to run into problems when accessing values from your variables. When you use reference types and you pass that reference through multiple threads, you can't be certain what you'll get back.
+
+
+Swift tries its best to be as safe as possible. So if you look at Dictionaries, Arrays, Strings -- all of these are value types (`struct`s). This is to make sure that the values aren't mutated.
+
+But reference types still exist in iOS development.
+
+Before Swift, iOS Development was done (and on occasion, is still being done) with a different language: Objective-C. Cocoa and Cocoa Touch are two frameworks that are the basis for all user interface related components. These were written in Objective-C, where you couldn't make `struct`s.
+
+So if you see `class` you know these are reference types and we should be careful to pass those references around in an app. It's perfectly fine to define something as a class, if you want one copy of the data to persist across threads, but you have to make sure that when it's mutated you can guarantee it isn't being accessed somewhere else. 
+
+Other than available Cocoa Touch classes (which we'll see once we play around with views), we'll be using structs in this workshop.
+
+## Properties
+Both structs and classes have properties. This is how you make whole objects that represent larger models. In the example above, `data` was a property of `myStruct` and `myClass`.
+
+```swift
+struct Dog {
+    var name: String
+    var age: Int
+    var favoriteToys: [String]
+}
+```
+
+When you create an instance of this struct, the initializer will look like this
+
+```swift
+var fido = Dog(name: "Fido", age: 2, favoriteToys: ["Gross dirty tennis ball", "sock"])
+```
+
+You can access those properties when you pass that instance around
+
+```swift
+print(fido.name) // "Fido"
+print(fido.age) // 2
+```
+----
+### __Exercise 9__
+
+Create a struct `Person` that represents a person. Give it a few properties (i.e. First Name, Last Name, Age, etc). Go crazy.
+
+---
+
+## Instance Methods
+With classes and structs, you can create instance methods. This can be define along with your properties in your struct or class. A good way to imagine what instance methods do is to imagine skills your struct or class should know how to do.
+
+For example, take our Dog struct. We can define an instance method to give it the ability to `bark`
+```swift
+struct Dog {
+    var name: String
+    var age: Int
+    var favoriteToys: [String]
+
+    func bark() {
+        print("Woof!")
+    }
+}
+```
+
+You can also give it instance methods that will update its properties. *But remember, structs by default, do not let you mutate it's properties.* So if you want an instance method to change it's properties, you have to define it as a `mutating func`
+```swift
+struct Dog {
+    var name: String
+    var age: Int
+    var favoriteToys: [String]
+
+    func bark() {
+        print("Woof!")
+    }
+
+    mutating func update(_ newFavoriteToys: [String]) {
+        favoriteToys = newFavoriteToys
+    }
+}
+```
+
+___
+### __Exercise 10__
+Add some instance methods to your Person struct. Try `func greeting()` to have your person instances say "Hello!". If you gave your Person struct a property for `name` and `age`, try `func happyBirthday()` to print out "Happy Birthday {Person's Name}" and update the person's age. Otherwise, think of other instance methods you'd want your `Person` struct to have.
+
+----
 
 ## Learn more Swift
 

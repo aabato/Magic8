@@ -26,6 +26,35 @@ import UIKit
 // To make it fancier, pass two arguments: the array of places and a boolean. The boolean will determine if the the string returned will say "Good Morning, ___" or "Good Evening, __ ".
 
 
+// Exercise 8:
+//Create a struct with a data property. Give it an initial value.
+
+//Initialize an instance of your struct, name it "a"
+
+//Create a variable "b" and make it equal to "a"
+
+//Change the data property of "a"
+
+//What does a and b equal?
+
+//Create a class with a data property. Give it an initial value. It should look almost exactly the same as your struct.
+
+//Initialize an instance of your class, name it "x"
+
+//Create another variable "y" and make it equal to "x"
+
+//Change the data property of "x"
+
+//What does x and y equal?
+
+
+
+// Exercise 9: Create a struct `Person` that represents a person. Give it a few properties (i.e. First Name, Last Name, Age, etc). Go crazy.
+
+
+// Exercise 10: Add some instance methods to your Person struct. Try `func greeting()` to have your person instances say "Hello!". If you gave your Person struct a property for `name` and `age`, try `func happyBirthday()` to print out "Happy Birthday {Person's Name}" and update the person's age. Otherwise, think of other instance methods you'd want your `Person` struct to have.
+
+
 /**************************
     Extra exercises
 ***************************/
