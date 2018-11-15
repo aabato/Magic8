@@ -537,12 +537,12 @@ We just went through a few basics for Swift, there are TONS more to learn about 
 # Storyboards
 We'll get back to Swift in a bit. For now, let's look at some storyboards.
 
-Open `Magic8.xcodeproj` to follow along this portion of the workshop
+Open `Magic8.xcodeproj` to follow along this portion of the workshop.
 
 ## Tools
 Xcode is a robust IDE (Integrated Development Environment) and has a ton of tools available to developers.
 
-At the top left corner, you can find a button to run, build or test your app, based on the simulator you've chosen.
+At the top left corner, you can find a button to run, build or test your app, based on the simulator you've chosen. Try building and running the app as is now, and see if it works. This should pull up a simulator with a blank screen.
 
 You can also open/close the navigator, the debugger, and inspectors on the top right corner.
 
