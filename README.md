@@ -2,10 +2,42 @@
 
 This workshop will walk you through some very basic Swift and help you explore Xcode, storyboards, and view controllers. This will be self-paced.
 
-Environment Requirements:
+Ideal Environment Requirements:
 * Make sure you have Xcode 10.1 installed
 * Make sure you have access to `Fundamentals.playground` and `Magic8.xcodeproj`. 
 
+
+<blockquote>
+<strong> Oh, no! I forgot to install Xcode</strong>
+
+If you do not have Xcode installed but have another IDE like Sublime Text, Atom, or VSCode you can do the Swift Fundamentals portions using any of these editors. Swift plugins are available for most IDEs now, so you can have proper syntax highlighting.
+
+Check that you have the most up-to-date Swift Version.
+
+```bash
+$ which swift
+/usr/bin/swift
+
+$ swift --version
+Apple Swift version 4.2.1 (swiftlang-1000.11.42 clang-1000.11.45.1)
+```
+
+Instead of using the playground, you can create your own swift file with this at the top of the file:
+
+```swift
+#!/usr/bin/swift
+```
+
+Change the permissions for the file to be executable
+```bash
+chmod u+rwx MyFile.swift
+```
+
+And in your terminal, you can call `./MyFile.swift` to see the output!
+
+Unfortunately, for the storyboard portion, you'll have to peer program with someone who does have Xcode. 👫👭👬 There are other ways to build things visually, but not quite in the scope of this workshop.
+
+</blockquote>
 <!-- TOC -->
 
 - [iOS Workshop - Contents](#ios-workshop---contents)
@@ -31,7 +63,7 @@ Environment Requirements:
         - [Anatomy of a function](#anatomy-of-a-function)
         - [__Exercise 7__](#__exercise-7__)
     - [Value Types vs. Reference Types](#value-types-vs-reference-types)
-        - [__Exercise 8__ Follow the steps below](#__exercise-8__-follow-the-steps-below)
+        - [__Exercise 8__](#__exercise-8__)
     - [Properties](#properties)
         - [__Exercise 9__](#__exercise-9__)
     - [Instance Methods](#instance-methods)
@@ -56,6 +88,8 @@ Environment Requirements:
 Open `Fundamentals.playground` to follow along with Exercises.
 
 ## `let` vs. `var`
+__Variables__ are common among all programming languages. It's essentially a container for any value or quantity, and these variables can be named to differentiate them from other containers. In Swift, these containers are also specific to the *type* of value that can be stored within it.
+
 There are two ways you can initialize a variable: using `let` and `var`
 
 `let` makes the value *immutable*, meaning it cannot be changed after it has been initialized
@@ -77,7 +111,7 @@ myImmutableNum = 2 + 3 // ??
 -------
 ## Data types
 ### Integers
-Integers are a primitive value type that represents a non-fractional number. This means only whole numbers. All mathematical operations with integers will result in an integer.
+Integers are a primitive value type that represents a non-fractional number. All mathematical operations with integers will result in an integer.
 ```swift
 let myInteger: Int = 1
 print(myInteger - 1) // 0
@@ -154,7 +188,7 @@ let arr = ["First", "Second", "Third", "Fourth"]
 print(arr[1]) // Second
 ```
 
-You can inspect properties of the array, and use function provided.
+You can inspect properties of the array, and use functions provided.
 
 You can find the number of elements by calling `count`.
 ```swift
@@ -247,7 +281,7 @@ for i in 0...5 {
     print(i)
 }
 ```
-3. You can also define the range different in the example below. The range is defined as `0..<6`, which includes all values from 0 (inclusive) to just less than 6.
+3. You can also define the range differentlyu in the example below. The range is defined as `0..<6`, which includes all values from 0 (inclusive) to just less than 6.
 ```swift
 for j in 0..<6 {
     print(j)
@@ -274,11 +308,27 @@ if sum > 5 {
     print("The sum is less than or equal to 5")
 }
 ```
+<blockquote>
+Try a few on your own -- think of some possible true/false checks. For example, a common (but really bad) password requirement is to have more the 6 characters in a password. Create an if/else statement that print an error if it is less than 6 characters. 
+
+Otherwise, feel free to move on -- we'll bring this back in a following exercise.
+</blockquote>
+
 ## Functions
 Functions are a great way to compartmentalize code into chunks.
 
 ### Anatomy of a function
 ![Anatomy of a Function](./imgs/function-declaration.jpg)
+
+<blockquote>
+<strong>Special Note:</strong> 
+
+When you define arguments in a function, notice that both an argument label and a parameter name exist. The <strong>argument label</strong> is used when calling the function, while the <strong>parameter label</strong> is used within the implementation of the function. So in the example above, notice the argument label `withUsername` is used in the function call `greetingUser(withUsername: "Bob")` and the parameter label `username` is only used within the function body. 
+
+Argument labels are there to help make functions more readable and to improve developer experience by making functions more clear to collaborators.
+
+*Argument labels are not required.* See some of the examples below where parameter names are defined, but do not have argument labels.
+</blockquote>
 
 A great use of functions is to be able to reuse the code based on patterns.
 
@@ -316,9 +366,24 @@ printHelloWorld() // Hello, World!
 ```
 -----
 ### __Exercise 7__
-Create a function that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array. 
+Create a function called `greet` that takes an array of places and returns "Hello, ___!", filling the blank with a random element of the given array. 
+
+```swift
+let arrayOfPlaces = ["Spain", "Bali", "Philippines"]
+greet(places: myArrayOfPlace) 
+// Hello, Bali
+
+```
 
 To make it fancier, pass two arguments: the array of places and a boolean. The boolean will determine if the the string returned will say "Good Morning, ___" or "Good Evening, __ ".
+
+
+```swift
+let arrayOfPlaces = ["Spain", "Bali", "Philippines"]
+greet(places: myArrayOfPlace, isDaytime: false) 
+// Good Evening, Spain
+
+```
 
 -----
 
@@ -326,9 +391,10 @@ To make it fancier, pass two arguments: the array of places and a boolean. The b
 Types fall into two categories: value and reference types. For value types, each instance keeps a unique copy of its data, like `struct`s or `enum`s. For reference types, instances share a single copy of the data, and we pass around the reference to that instance instead. This is usually defined as a `class`. 
 
 -----
-### __Exercise 8__ Follow the steps below
-```swift
+### __Exercise 8__ 
 
+Follow the steps below
+```swift
 //Create a struct with a data property. Give it an initial value.
 struct myStruct {
     var data: Int = -1
@@ -343,9 +409,9 @@ var b = a
 //Change the data property of "a"
 a.data = 42
 
-// What does a and b equal?
-print(a, b)
-print(a.data, b.data)
+// What does a and b equal? What is in each instance's data property?
+
+
 
 //Create a class with a data property. Give it an initial value. It should look almost exactly the same as your struct.
 class myClass {
@@ -361,9 +427,8 @@ var y = x
 //Change the data property of "x"
 x.data = 42
 
-// What does x and y equal?
-print(x, y)
-print(x.data, y.data)
+// What does x and y equal? What is in each instance's data property?
+
 ```
 ----
 
@@ -406,14 +471,16 @@ print(fido.age) // 2
 ----
 ### __Exercise 9__
 
-Create a struct `Person` that represents a person. Give it a few properties (i.e. First Name, Last Name, Age, etc). Go crazy.
+Create a struct called `Person` that represents a person. Give it a few properties (i.e. First Name, Last Name, Age, etc). Go crazy.
 
 ---
 
 ## Instance Methods
 With classes and structs, you can create instance methods. This can be define along with your properties in your struct or class. A good way to imagine what instance methods do is to imagine skills your struct or class should know how to do.
 
-For example, take our Dog struct. We can define an instance method to give it the ability to `bark`
+Look at `Array`s and our use of `randomElement()` -- guess what? That's an instance method!
+
+Now let's take a look at our Dog struct that we created earlier. We can define an instance method to give it the ability to `bark`
 ```swift
 struct Dog {
     var name: String
@@ -424,6 +491,10 @@ struct Dog {
         print("Woof!")
     }
 }
+
+var fido = Dog(name: "Fido", age: 2, favoriteToys: ["Gross dirty tennis ball", "sock"])
+
+fido.bark() // Woof!
 ```
 
 You can also give it instance methods that will update its properties. *But remember, structs by default, do not let you mutate it's properties.* So if you want an instance method to change it's properties, you have to define it as a `mutating func`
@@ -437,19 +508,25 @@ struct Dog {
         print("Woof!")
     }
 
-    mutating func update(_ newFavoriteToys: [String]) {
+    mutating func update(newFavoriteToys toys: [String]) {
         favoriteToys = newFavoriteToys
     }
 }
+
+...
+
+fido.update(newFavoriteToys: ["stuffed alligator", "trampoline"]
 ```
 
 ___
 ### __Exercise 10__
-Add some instance methods to your Person struct. Try `func greeting()` to have your person instances say "Hello!". If you gave your Person struct a property for `name` and `age`, try `func happyBirthday()` to print out "Happy Birthday {Person's Name}" and update the person's age. Otherwise, think of other instance methods you'd want your `Person` struct to have.
+Add some instance methods to your Person struct you created in Exercise 9. Try `func greeting()` to have your person instances say "Hello!". If you gave your Person struct a property for `name` and `age`, try `func happyBirthday()` to print out "Happy Birthday {Person's Name}" and update the person's age and increaasing it by 1. Otherwise, think of other instance methods you'd want your `Person` struct to have.
 
 ----
 
 ## Learn more Swift
+
+We just went through a few basics for Swift, there are TONS more to learn about the language. 
 
 * Check out [Swift.org Basics](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html) to learn more Swift
 * There are extra exercises included in `Fundamentals.playground`
@@ -519,7 +596,11 @@ So let's play around with constraints!
 Hurray! It's in the right place now!
 
 ## Build the Magic 8 Ball
-Okay, time to build a Magic 8 Ball App.
+Okay, time to build a Magic 8 Ball App. If you're not familiar with the Magic 8 Ball, its a toy to which you ask any Yes or No question. You shake the Magic 8 Ball, and it will give you a response to your question.
+
+![Just be careful](https://i.makeagif.com/media/4-03-2015/n29Pqd.gif)
+
+So let's get started!
 ### Set up the view
 1. Open the library again (just like you did to find the label) and drag in an `ImageView`
 2. Set the constraints for the imageview relative to the main view:
@@ -533,8 +614,8 @@ Okay, time to build a Magic 8 Ball App.
 6. Change `Content Mode` to `Aspect Fill`
 7. Select your "Hello, World!" label in the document outline
 8. In the attributes inspector, change the content of your label to "Ask a Question", and change the font/text color to make it clearer.
-9. Feel free to change the constraints for the label to fit in the triangle.
-10. Pull up the library on more time, and drag in a `Tap Gesture Recognizer`. This won't be used until later.
+9. Feel free to change the constraints for the label to fit in the triangle. Can you figure out how to set constraints for it's own width and height? (Hint: Try holding `ctrl` and dragging to itself.)
+10. Pull up the library one more time, and drag in a `Tap Gesture Recognizer`. This won't be used until later.
 
 You should have something like this in the storyboard
 
@@ -547,14 +628,14 @@ You should have something like this in the storyboard
 4. Select the Answer label in the storyboard and (just like when doing constraints) hold down Ctrl, click and drag between the label and the assitant editor, right above the `viewDidLoad` function.
 ![Add outlet](./imgs/add_outlet.gif)
 5. Check to see if the popup say it has an `Outlet` connection, and it is for type `UILabel`. 
-6. For the name, set it to `answerLabel` and click Connect. You have just made your first interface builder outlet; it should look like a typical variable of type `UILabel`. This allows us to change attributes of the label in the code.
-7. Above the `viewDidLoad` function and the outlet you just created, create an array of all the possible answers. [Wikipedia has all of them](https://en.wikipedia.org/wiki/Magic_8-Ball)
+6. For the name, set it to `answerLabel` and click Connect. You have just made your first interface builder outlet; it should look like a typical property of type `UILabel`. By creating this outlet, you've connected this UILabel object as a property of your ViewController class. This allows us to change attributes of the label in the code.
+7. Above the `viewDidLoad` function and the outlet you just created, create an array of all the possible answers your Magic 8 Ball can respond with. [Wikipedia has all of them](https://en.wikipedia.org/wiki/Magic_8-Ball). Or, even better, make up your own responses for your Magic 8 Ball. Or use just emojis. Make this your own.
 8. Time to connect the Tap Gesture Recognizer we added earlier! From the document outline, drag the Tap Gesture Recongnizer to the assistant editor, placing it below `viewDidLoad`.
 ![Add action](./imgs/add_action.gif)
 9. Check to see if the popup has an `Action` connection for Type `Any`.
-10. For the name, set it to `tapGestureRecognized` and click Connect. This is your first interface builder action. It should look like a function. This allows us to run code when the app recognizes a tap event.
+10. For the name, set it to `tapGestureRecognized` and click Connect. This is your first interface builder action. It should look like an instance method. This function will run when it recognized a tap event.
 11. Inside your `tapGestureRecognized` function, create a variable that stores a random element from your array of answers (Told you our Swift work would come back!)
-12. `UILabel`s have a property called `text` that represents the text in a label. Set your random answer string as our `answerLabel`'s `text`.
+12. That `UILabel` we connected earlier called `answerLabel` has a property called `text` that represents the text in the label. Set your random answer string as our `answerLabel`'s `text`.
 
 Run your app. Try tapping on the screen of the simulator.
 
@@ -571,13 +652,13 @@ You may need to change the constraints to fit all possible strings.
    
 ### Try using a shake gesture instead of a tap gesture 
 
-1. Shake gestures are not available in the library, so you'll have to add `motionEnded` function to your `ViewController.swift`. The parent class of ViewController.swift is aware of motion events, and you can override it in your subclass.
+1. Shake gestures are not available in the library, so you'll have to add the `motionEnded` function to your `ViewController` class. The parent class of ViewController.swift is aware of motion events, and you can override it in your subclass.
 ```swift
 override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
     
 }
 ```
-2. Inside this function, check if the `motion` argument passed in the function is equal to `.motionShake`. If so, change the answer label as you did for the tap gesture
+2. Inside this function, check if the `motion` argument passed in the function is equal to `.motionShake`. If `motion` is equal to `.motionShake`, change the answer label as you did for the tap gesture
    
 ### Add a shake animation
 Try connecting the image as an IBOutlet, and animating it when you shake/tap. 
@@ -586,10 +667,10 @@ Try connecting the image as an IBOutlet, and animating it when you shake/tap.
 2. Create a new file in your navigator panel. 
 3. Choose a regular Swift file. 
 4. Name it `UIView+Animations.swift`
-5. [Add this extension](https://gist.github.com/mourad-brahim/cf0bfe9bec5f33a6ea66) You'll want to add the correction for Swift 4. This creates a function `shake` available to all UIViews that animates a shake. 
+5. [Add this extension](https://gist.github.com/mourad-brahim/cf0bfe9bec5f33a6ea66) You'll want to add the correction for Swift 4. This creates a function `shake` that will animate a shake. This extension will also make this shake function available to all UIViews (include Image Views).
 6. This will give you one error -- change `kCAMediaTimingFunctionLinear` to `.linear` and you should be all set.
 7. In the `motionEnded` function, right before you change the text in the label, call `shake` on your image view. This will trigger the animation.
 
-
+__Interested in doing more?__ Let me know, I have another project up my sleeve. 🕴🏼
 
 
