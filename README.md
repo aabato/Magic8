@@ -104,6 +104,9 @@ print(myNum)  // 5
 let myImmutableNum = 1
 myImmutableNum = 2 + 3 // ??
 ```
+
+__Fun Fact:__ You can use emojis as variable names. `let 😛 = 5`
+
 -------
 ### __Exercise 1__
 <em>What happens if you try to reassign a `let` variable?</em>
