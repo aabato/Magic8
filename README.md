@@ -671,6 +671,6 @@ Try connecting the image as an IBOutlet, and animating it when you shake/tap.
 6. This will give you one error -- change `kCAMediaTimingFunctionLinear` to `.linear` and you should be all set.
 7. In the `motionEnded` function, right before you change the text in the label, call `shake` on your image view. This will trigger the animation.
 
-
+__Interested in doing more?__ Let me know, I have another project up my sleeve. 🕴🏼
 
 
